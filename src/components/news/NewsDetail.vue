@@ -1,6 +1,6 @@
 <template>
     <div class="tmpl">
-        <nav-bar title='新闻详情'></nav-bar>
+        <nav-bar :title='title'></nav-bar>
         <div class="news-title">
             <p v-text="newsInfo.title"></p>
             <div>
@@ -16,7 +16,8 @@
     export default{
         data(){
             return {
-              newsInfo:{}  
+              newsInfo:{},
+              title:'新闻详情'
             }
         },
         created(){
@@ -27,6 +28,21 @@
             })
             .catch(err=>{
                 console.log('获取图文详情数据失败',err)       
+            })
+        },
+        beforeRouteEnter(to, from, next){
+            let title = '';
+            if(from.name === 'news.list'){
+                title = "新闻详情";
+            }else if(from.name === "goods.detail"){
+                title = "商品详情";
+            }else if(to.name.startsWith('goods')){
+                title = "商品详情";
+            }else if(to.name.startsWith('news')){
+                title = "新闻详情";
+            }
+            next(vm=>{
+                vm.title = title;
             })
         }
     }

@@ -10,12 +10,18 @@ import NewsList from "./components/news/NewsList.vue";
 import NewsDetail from "./components/news/NewsDetail.vue";
 import PhotoList from "./components/photo/PhotoList.vue";
 import PhotoDetail from "./components/photo/PhotoDetail.vue";
+import GoodsList from "./components/goods/GoodsList.vue";
+import GoodsDetail from "./components/goods/GoodsDetail.vue";
+import GoodsComment from "./components/goods/GoodsComment.vue";
+import NotFound from './components/commons/NotFound.vue'
 //引入组件结束
 //全局组件的操作开始
 import NavBar from './components/commons/NavBar.vue';
 import Comment from './components/commons/Comment.vue';
+import MySwipe from './components/commons/MySwipe.vue';
 Vue.component('NavBar',NavBar);
 Vue.component('Comment',Comment);
+Vue.component('MySwipe',MySwipe);
 //全局组件的操作结束
 
 //Moment开始
@@ -56,7 +62,12 @@ let router = new VueRouter({
       {name:'news.list',path:'/news/list',component:NewsList},
       {name:"news.detail",path:"/news/detail",component:NewsDetail},
       {name:"photo.list",path:"/photo/list",component:PhotoList},
-      {name:'photo.detail',path:"/photo/detail/:imgId",component:PhotoDetail}
+      {name:'photo.detail',path:"/photo/detail/:imgId",component:PhotoDetail},
+      {name:'goods.list',path:'/goods/list',component:GoodsList},
+      {name:'goods.detail',path:'/goods/detail/:goodsId',component:GoodsDetail},
+      {name:'goods.comment',path:'/goods/comment',component:GoodsComment},
+      {name:'goods.PhotoDetail',path:'/goods/photo/detail',component:NewsDetail},
+      {path:'*',component:NotFound}
   ]
 })  
 //Vuerouter结束
